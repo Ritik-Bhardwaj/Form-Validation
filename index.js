@@ -1,0 +1,98 @@
+    const form =document.getElementById('form');
+    const username = document.getElementById('username');
+    const email =document.getElementById('email');
+    const phone =document.getElementById('phone');
+    const password=document.getElementById('password');
+    const cpassword=document.getElementById('cpassword');
+
+   //  Add Event--
+   form.addEventListener('submit',(event)=>{
+      event.preventDefault();
+      // console.log(event.target[0].value);
+      validate();
+   })
+   //  more email validate
+   const isEmail =(emailVal) => {
+      var atSymbol = emailVal.indexOf("@");
+      if(atSymbol < 1) return false;
+      var dot = emailVal.indexOf('.');
+      if(dot <= atSymbol + 2) return false;
+      if(dot === email.length -1) return false;
+      return true;
+   }
+  
+   //  Define the validate function
+    const validate = () =>{
+    const usernameVal = username.value.trim();  
+    const emailVal = email.value.trim();
+    const phoneVal = phone.value.trim();
+    const passwordVal = password.value.trim();
+    const cpasswordVal = cpassword.value.trim();
+
+     // Validate Username 
+  
+     if(usernameVal === ""){
+      window.alert('user name can not be null');
+        setErrorMsg(username, 'username cannot be blank');
+     }  
+     else if(usernameVal.length <= 3){
+        setErrorMsg(username,  'username minimum 3 character');
+     }
+     else{
+        setSuccessMsg(username);
+     }
+
+     //Validate Email id
+     if(emailVal === ""){
+        setErrorMsg(email, 'email cannot be blank');
+     }  
+     else if(!isEmail(emailVal)){
+        setErrorMsg(emailVal,  'Not a valid Email');
+     }
+     else{
+        setSuccessMsg(email);
+     }
+        //Validate Phone number
+     if(phoneVal === ""){
+        setErrorMsg(phone, 'phone number cannot be blank');
+     }  
+     else if(phoneVal.length != 10) {
+        setErrorMsg(phone,  'Not a valid mobile number');
+     }
+     else{
+        setSuccessMsg(phone);
+      }
+
+      //Validate password
+     if(passwordVal === ""){
+        setErrorMsg(password, 'password cannot be null');
+     }  
+     else if(passwordVal.length <= 5 ){
+        setErrorMsg(password,  'Minimumm 6 char');
+     }
+     else{
+        setSuccessMsg(password);
+    }
+      //Validate confirm password
+      if(cpasswordVal === ""){
+        setErrorMsg(cpassword, 'confrm password cannot be null');
+     }  
+     else if( password !== cpasswordVal){
+        setErrorMsg(cpassword,  'Password is not matching');
+     }
+     else{
+        setSuccessMsg(cpassword);
+    }
+}
+
+     function setErrorMsg(input, errormsg){
+        const formControl = input.presentElement;
+        const small = formControl.querySelector('small');
+        formControl.className ="form-control error";
+        small.innerText = errormsg;             
+    }
+    function setSuccessMsg(input){
+      // debugger
+        const formControl = input.presentElement;
+        formControl.className ="form-control success";
+    }
