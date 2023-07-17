@@ -10,6 +10,28 @@
       event.preventDefault();
       validate();
    })
+      const  sendData = (usernameVal, successRate, count) => {
+         if(successMsg === count){
+            alert('Registration Successful');
+            swal("Welcome! "+usernameVal, "Registration Successful", "success");
+         }
+      }
+   // for final data validation
+   const successMsg = (usernameVal) => {
+      let formCont =document.getElementsByClassName('form-control');
+      var count = formCont.length-1;
+      for(var i =0; i<formCont.length; i++){
+         if(formCont[i].className === 'form-control success')
+         {
+            var successRate = 0+i;
+            sendData(usernameVal, successRate, count)
+         }
+         else{
+            return false;
+         }
+      }
+    
+   }
    //  more email validate
    const isEmail =(emailVal) => {
       var atSymbol = emailVal.indexOf("@");
@@ -81,6 +103,7 @@
      else{
         setSuccessMsg(cpassword);
     }
+     successMsg(usernameVal);
 }
 
      function setErrorMsg(input, errormsg){
