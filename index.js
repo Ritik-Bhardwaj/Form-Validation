@@ -103,6 +103,9 @@
      else if( cpasswordVal !== passwordVal){
         setErrorMsg(cpassword,  'Password is not matching');
      }
+     else if(cpasswordVal.length <= 5 ){
+      setErrorMsg(cpassword,  'Minimumm 6 char');
+   }
      else{
         setSuccessMsg(cpassword);
     }
