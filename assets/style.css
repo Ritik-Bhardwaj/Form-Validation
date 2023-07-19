@@ -27,7 +27,7 @@ body{
     background-color: #fff;
     border-radius: 10px;
     -wekit-border-radius: 10px;
-    /* box-shadow: 0 2.8px 2.2px rgba(0,0,0, 0,0.034), 0 6.7px 5.3px rgba(0,0,0,0,0.048), 0 12.; */
+    box-shadow: 0 0 8px 0 #fff;
     overflow: hidden;
     width: calc(100vw - 65vw);
     max-width: 100%;
@@ -111,7 +111,7 @@ body{
     font-size: 16px;
     padding: 15px 0; 
     margin-top: 20px;
-    box-shadow: 0 0 8px 0;
+    box-shadow: 0 0 8px 0 #fff;
     width: 100%;
     font-weight: bold;
     text-transform:uppercase;
@@ -129,4 +129,10 @@ body{
         width: calc(100vw - 35vw);
         max-width: 100%;
     }
+}
+
+@media(max-width:550px){
+  .container{
+    width: 90vw;
+  }  
 }
