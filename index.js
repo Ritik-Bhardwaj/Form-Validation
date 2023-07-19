@@ -11,7 +11,7 @@
       validate();
    })
       const  sendData = (usernameVal, successRate, count) => {
-         if(successMsg === count){
+         if(successRate === count){
             alert('Registration Successful');
             swal("Welcome! "+usernameVal, "Registration Successful", "success");
          }
@@ -90,6 +90,9 @@
      else if(passwordVal.length <= 5 ){
         setErrorMsg(password,  'Minimumm 6 char');
      }
+     else if(passwordVal !== cpasswordVal){
+      setErrorMsg(password,  'Password is not matching');
+     }
      else{
         setSuccessMsg(password);
     }
@@ -97,7 +100,7 @@
       if(cpasswordVal === ""){
         setErrorMsg(cpassword, 'confrm password cannot be null');
      }  
-     else if( passwordVal !== cpasswordVal){
+     else if( cpasswordVal !== passwordVal){
         setErrorMsg(cpassword,  'Password is not matching');
      }
      else{
